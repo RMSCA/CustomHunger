@@ -3,4 +3,13 @@ version: '${project.version}'
 main: com.rmsca.customhunger.CustomHunger
 api-version: 1.19
 authors: [ RMSCA ]
-description: A Minecraft plugin that lets you customize any food values, with more useful features!
+description: A Minecraft plugin that lets you customize any food values!
+commands:
+  ch:
+    description: The main command of CustomHunger
+    usage: "/ch"
+    aliases:
+      - customhunger
+      - customHunger
+      - CustomHunger
+      - Customhunger
