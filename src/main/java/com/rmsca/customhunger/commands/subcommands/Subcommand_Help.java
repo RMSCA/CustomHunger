@@ -29,6 +29,7 @@ public class Subcommand_Help extends Subcommand implements TabCompleter {
     public void execute(Player player, String[] args) {
         subcommandList = CommandManager.subcommandList;
         switch (args.length) {
+            // /ch help
             case 1:
                 CustomHungerUtils.sendMessage(player, "Available commands:");
                 for (Subcommand subcommand : subcommandList) {
@@ -36,6 +37,7 @@ public class Subcommand_Help extends Subcommand implements TabCompleter {
                 }
                 CustomHungerUtils.sendMessage(player, getUsage());
                 break;
+            // /ch help <command>
             case 2:
                 for (Subcommand subcommand : subcommandList) {
                     if (args[1].equals(subcommand.getName())) {
