@@ -2,7 +2,7 @@ package com.rmsca.customhunger.commands.subcommands;
 
 import com.rmsca.customhunger.commands.CommandManager;
 import com.rmsca.customhunger.commands.Subcommand;
-import com.rmsca.customhunger.utils.CustomHungerUtils;
+import static com.rmsca.customhunger.utils.CustomHungerUtils.sendMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -31,25 +31,25 @@ public class Subcommand_Help extends Subcommand implements TabCompleter {
         switch (args.length) {
             // /ch help
             case 1:
-                CustomHungerUtils.sendMessage(player, "Available commands:");
+                sendMessage(player, "Available commands:");
                 for (Subcommand subcommand : subcommandList) {
-                    CustomHungerUtils.sendMessage(player, subcommand.getName());
+                    sendMessage(player, subcommand.getName());
                 }
-                CustomHungerUtils.sendMessage(player, getUsage());
+                sendMessage(player, getUsage());
                 break;
             // /ch help <command>
             case 2:
                 for (Subcommand subcommand : subcommandList) {
                     if (args[1].equals(subcommand.getName())) {
-                        CustomHungerUtils.sendMessage(player, subcommand.getUsage());
+                        sendMessage(player, subcommand.getUsage());
                         return;
                     }
                 }
-                CustomHungerUtils.sendMessage(player, "Command not found");
-                CustomHungerUtils.sendMessage(player, getUsage());
+                sendMessage(player, "Command not found");
+                sendMessage(player, getUsage());
                 break;
             default:
-                CustomHungerUtils.sendMessage(player, getUsage());
+                sendMessage(player, getUsage());
                 break;
         }
     }

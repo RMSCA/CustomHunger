@@ -1,13 +1,17 @@
 package com.rmsca.customhunger.utils;
 
+import com.rmsca.customhunger.CustomHunger;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import javax.annotation.Nullable;
+import java.util.logging.Logger;
 
 public final class CustomHungerUtils {
-    private CustomHungerUtils() {
-    }
+    public static final Plugin plugin = CustomHunger.getPlugin(CustomHunger.class);
+    public static final Logger logger = plugin.getLogger();
+    private CustomHungerUtils() {}
 
     /**
      * Check if a String can be converted to Integer

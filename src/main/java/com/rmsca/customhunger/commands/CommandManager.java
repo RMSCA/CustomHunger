@@ -1,7 +1,6 @@
 package com.rmsca.customhunger.commands;
 
-import com.rmsca.customhunger.commands.subcommands.Subcommand_Help;
-import com.rmsca.customhunger.commands.subcommands.Subcommand_SetFoodLevel;
+import com.rmsca.customhunger.commands.subcommands.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -18,6 +17,7 @@ public class CommandManager implements TabExecutor {
         subcommandList = new ArrayList<>();
         subcommandList.add(new Subcommand_SetFoodLevel());
         subcommandList.add(new Subcommand_Help());
+        subcommandList.add(new Subcommand_Reload());
     }
 
     @Override

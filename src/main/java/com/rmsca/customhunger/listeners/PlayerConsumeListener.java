@@ -1,6 +1,6 @@
 package com.rmsca.customhunger.listeners;
 
-import com.rmsca.customhunger.CustomHunger;
+import static com.rmsca.customhunger.utils.CustomHungerUtils.*;
 import com.rmsca.customhunger.utils.DefaultFoodValue;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -8,16 +8,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class PlayerConsumeListener implements Listener {
     private static Map<Material, Integer> foodValueMap;
-    Plugin plugin = CustomHunger.getPlugin(CustomHunger.class);
-    Logger logger = plugin.getLogger();
 
     @EventHandler
     public void onPlayerConsume(PlayerItemConsumeEvent event) {
@@ -58,7 +54,7 @@ public class PlayerConsumeListener implements Listener {
         }
     }
 
-    private Map<Material, Integer> getFoodValueMap() {
+    private static Map<Material, Integer> getFoodValueMap() {
         Map<Material, Integer> foodValueMap = new HashMap<>();
         for (Material material : Material.values()) {
             if (material.isEdible()) {
@@ -69,10 +65,14 @@ public class PlayerConsumeListener implements Listener {
         return foodValueMap;
     }
 
-    private Integer getFoodValue(Material material) {
+    public static void setFoodValueMap() {
+        foodValueMap = getFoodValueMap();
+    }
+
+    private static Integer getFoodValue(Material material) {
         Integer foodValue = null;
         if (foodValueMap == null) {
-            foodValueMap = getFoodValueMap();
+            setFoodValueMap();
         }
         if (foodValueMap.containsKey(material)) {
             foodValue = foodValueMap.get(material);
@@ -82,7 +82,7 @@ public class PlayerConsumeListener implements Listener {
         return foodValue;
     }
 
-    private boolean isPotion(Material material) {
+    private static boolean isPotion(Material material) {
         return material.equals(Material.POTION);
     }
 }
